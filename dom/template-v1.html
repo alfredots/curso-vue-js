@@ -1,0 +1,26 @@
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{titulo}}</p>
+    <p>{{saudacao()}}</p>
+    <a v-bind:href="link">google</a>
+    <a v-bind:href="link">google</a>
+    <div v-html="linkHtml"></div>
+</div>
+
+<script>
+    new Vue({
+        el: "#app",
+        data: {
+            titulo: 'vue js!',
+            link: 'http://google.com.br',
+            linkHtml: '<a href="http://github.com">Git</a>'
+        },
+        methods: {
+            saudacao: function () {
+                return this.titulo
+            }
+        }
+    })
+</script>
