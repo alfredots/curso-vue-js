@@ -1,0 +1,106 @@
+#desafio {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.vidas {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+}
+
+.vidas .vida {
+    width: 300px;
+    height: 50px;
+    border: 1px solid #000000;
+}
+
+.vida .cor-da-vida {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+}
+
+.ganhador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+}
+
+.btn {
+    height: 40px;
+    font-size: 1rem;
+    margin: 0 0.8rem;
+    padding: 0 0.8rem;
+    border-radius: 0.8rem;
+    outline: 0;
+}
+
+.btn.ataque {
+    background-color: red;
+    color: #ffffff;
+}
+
+.btn.especial {
+    background-color: yellow;
+}
+
+.btn.curar {
+    background-color: green;
+    color: #ffffff;
+}
+
+.logs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 0.8rem;
+    margin: 0.8rem 0;
+}
+
+.btn.desistir {
+    background-color: gray;
+}
+
+.logs ul {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.logs ul li {
+   width: 100%;
+   padding: 0.8rem 0;
+   margin: 0.8rem 0;
+   background-color: lightcoral;
+   text-align: center;
+   border-radius: 0.8rem;
+}
+
+.logs ul li:nth-child(even) {
+    background-color: lightcyan;
+}
+
+.logs ul li:nth-child(odd) {
+    background-color: lightcoral;
+}

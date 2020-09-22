@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/vue"></script>
+
+<div id="desafio">
+    <!-- painel de vidas -->
+    <div class="vidas">
+        <!-- vida do jogador -->
+        <div>
+            <h1 class="nome">Jogador</h1>
+            <div class="vida">
+                <div class="cor-da-vida" :style="{width: vidaJogador < 0 ? 0 : vidaJogador + '%'}"></div>
+            </div>
+        </div>
+        <!-- vida do monstro -->
+        <div>
+            <h1 class="nome">Monstro</h1>
+            <div class="vida">
+                <div class="cor-da-vida" :style="{width: vidaMonstro < 0 ? 0 : vidaMonstro + '%'}"></div>
+            </div>
+        </div>
+    </div>
+     <!-- painel do ganhador -->
+     <div class="ganhador">
+        <span v-if="vidaMonstro < 0">O jogador venceu</span>
+        <span v-if="vidaJogador < 0">O monstro venceu</span>
+    </div>
+    <!-- painel de acoes -->
+    <div class="acoes">
+        <template v-if="iniciar">
+            <button class="btn ataque" @click="ataque()">ataque</button>
+            <button class="btn especial" @click="especial()">ataque especial</button>
+            <button class="btn curar" @click="curar()">curar</button>
+            <button class="btn desistir" @click="desistir()">desistir</button>
+        </template>
+        <template v-else>
+            <button @click="iniciar = !iniciar">começar novo jogo</button>
+        </template>
+    </div>
+    <!-- log de ações -->
+    <div class="logs" v-show="iniciar">
+        <ul>
+            <li v-for="log in logs">{{ log }}</li>
+        </ul>
+    </div>
+
+</div>
+<script src="app.js"></script>
