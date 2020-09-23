@@ -1,27 +1,66 @@
 <template>
 	<div id="app">
-		<h1>Tarefas</h1>
+		<text-red>Tarefas</text-red>
 		<!-- barra de progresso -->
-		<div class="app-progress-bar">
-			<div class="app-progress-fill">
-			</div>
-			<span class="app-progress-value">100%</span>
-		</div>
+		<app-progress-bar :progress="progress"/>
 		<!-- input de tarefa -->
-		<div class="form">
-			<input type=text label="Nova tarefa?"/>
-			<button>+</button>
-		</div>
+		<app-input/>
 		<!-- novas tarefas -->
 		<ul class="app-tasks">
-			<li>teste</li>
+			<app-card v-for="task in tasks" :text="task" :key="task"/>
 		</ul>
 	</div>
 </template>
 
 <script>
-export default {
+import ProgressBar from './components/ProgressBar'
+import Card from './components/Card'
+import Input from './components/Input'
+import barramento from '@/barramento'
+import TextRed from 'lib-font-colors/src'
 
+export default {
+	components: {
+		AppProgressBar : ProgressBar,
+		AppCard : Card,
+		AppInput: Input,
+		TextRed
+	},
+	data () {
+		return {
+			progressValue: 50,
+			tasks: [],
+			finishedTasks: []
+		}
+	},
+	computed: {
+		progress () {
+			if (this.tasks.length === 0)
+				return 0
+			else
+				return Math.ceil((this.finishedTasks.length / this.tasks.length) * 100);
+		}
+	},
+	created() {
+		barramento.whenAddTask((task) => {
+			if(!this.tasks.includes(task))
+				this.tasks.push(task)
+		}),
+		barramento.whenDeleteTask((text) => {
+			let tempArray = [...this.tasks]
+			tempArray = tempArray.filter(e => e != text)
+			this.tasks = tempArray
+		})
+		barramento.whenAddFinishedTask((task) => {
+			if(!this.finishedTasks.includes(task) && this.tasks.includes(task))
+				this.finishedTasks.push(task)
+		}),
+		barramento.whenDeleteFinishedTask((text) => {
+			let tempArray = [...this.finishedTasks]
+			tempArray = tempArray.filter(e => e != text)
+			this.finishedTasks = tempArray
+		})
+	}
 }
 </script>
 
@@ -46,68 +85,4 @@ export default {
 		font-weight: 300;
 		font-size: 3rem;
 	}
-
-	.app-progress-bar {
-		width: 90%;
-		height: 20px;
-		border: 1px solid #ffffff;
-		border-radius: 8px;
-		margin-bottom: 16px;
-		position: relative;
-	}
-
-	.app-progress-fill {
-		width: 30%;
-		height: 100%;
-		background-color: #67AA5C;
-		border-radius: 8px;
-		align-self: flex-start;
-	}
-
-	.app-progress-value {
-		position: absolute;
-		top: 0;
-		left: 50%;
-	}
-
-	.form input {
-		width: 300px;
-		height: 40px;
-		background-color: transparent;
-		color: #FFF;
-		font-size: 16px;
-		outline: 0;
-		border: 1px solid #FFF;
-		border-radius: 8px 0px 0px 8px;
-	}
-
-	.form button {
-		width: 40px;
-		height: 44px;
-		background-color: transparent;
-		color: #FFF;
-		font-size: 16px;
-		outline: 0;
-		border: 1px solid #FFF;
-		border-radius: 0px 8px 8px 0px;
-	}
-
-	.app-tasks {
-		width: 95%;
-		height: 40%;
-		list-style: none;
-	}
-
-	.app-tasks li {
-		width: 18%;
-		height: 30%;
-		background-color: #67AA5C;
-		border-left: 10px solid #22441c;
-		border-radius: 8px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-	}
-
 </style>
