@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "lib-font-colors": "^0.1.0",
+    "@flockos/vue-components": "^0.1.73",
+    "lib-font-colors": "^0.1.9",
     "vue": "^2.5.17"
   },
   "devDependencies": {

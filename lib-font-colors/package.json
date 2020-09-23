@@ -1,11 +1,11 @@
 {
   "name": "lib-font-colors",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:npm": "vue-cli-service build --target lib --name libFontColors src/index.js",
+    "build:npm": "vue-cli-service build --target lib --name libFontColors ./src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -21,6 +21,15 @@
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
   },
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js",
+    "css"
+  ],
+  "main": "./dist/libFontColors.common.js",
   "eslintConfig": {
     "root": true,
     "env": {

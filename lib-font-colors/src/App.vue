@@ -1,19 +1,15 @@
 <template>
   <div id="app">
-    <TextRed>
-      Teste um dois três
-    </TextRed>
+    <text-blue>
+      teste 
+    </text-blue>
   </div>
 </template>
 
 <script>
-import TextRed from './components/TextRed'
 
 export default {
   name: 'App',
-  components: {
-    TextRed
-  }
 }
 </script>
 

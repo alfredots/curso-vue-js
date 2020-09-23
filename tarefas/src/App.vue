@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<text-red>Tarefas</text-red>
+		<text-blue>Tarefas</text-blue>
 		<!-- barra de progresso -->
 		<app-progress-bar :progress="progress"/>
 		<!-- input de tarefa -->
@@ -17,14 +17,12 @@ import ProgressBar from './components/ProgressBar'
 import Card from './components/Card'
 import Input from './components/Input'
 import barramento from '@/barramento'
-import TextRed from 'lib-font-colors/src'
 
 export default {
 	components: {
 		AppProgressBar : ProgressBar,
 		AppCard : Card,
-		AppInput: Input,
-		TextRed
+		AppInput: Input
 	},
 	data () {
 		return {
