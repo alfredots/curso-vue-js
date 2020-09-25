@@ -57,6 +57,7 @@ button {
 [sucesso] {
     color: #FFF;
     background-color: #47af55;
+    margin-top: 1.5rem;
 }
 
 [sucesso]:hover {
